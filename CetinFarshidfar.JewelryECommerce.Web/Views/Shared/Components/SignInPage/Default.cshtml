@@ -1,0 +1,24 @@
+﻿@using CetinFarshidfar.JewelryECommerce.EntityLayer.VMs.Users
+@*
+    SIGN IN PAGE FOR USERS
+*@
+@model UserLoginVM
+
+<form method="post" asp-area="" asp-controller="Auths" asp-action="Login">
+	<div class="section text-center">
+		<h4 class="mb-4 pb-3">Giriş yap</h4>
+		<div class="form-group">
+			<span asp-validation-for="Email"></span>
+			<input asp-for="Email" class="form-style" placeholder="Email" id="logemail">
+			<i class="input-icon bi bi-threads"></i>
+		</div>
+		<div class="form-group mt-2">
+			<span asp-validation-for="Password"></span>
+			<input asp-for="Password" class="form-style" placeholder="Şifre" id="logpass">
+			<i class="input-icon bi bi-shield-lock"></i>
+		</div>
+		<button class="btn mt-4" type="submit">Giriş</button>
+		<p class="mb-0 mt-4 text-center"><a href="#0" class="link">Şifrenizi mi unuttunuz?</a></p>
+	</div>
+	@Html.AntiForgeryToken()
+</form>

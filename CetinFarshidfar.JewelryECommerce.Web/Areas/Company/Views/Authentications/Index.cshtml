@@ -1,0 +1,75 @@
+﻿@using CetinFarshidfar.JewelryECommerce.Web.Areas.Company.Models
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+@model ComAuthsModel
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CetinFarshidfar.JewelryECommerce.Web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CetinFarshidfar.JewelryECommerce.Web.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!--Font awsome for icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/company_authpage.css" asp-append-version="true" />
+
+</head>
+<body>
+
+
+    <div class="container">
+        <section id="formHolder">
+            <div class="row">
+
+                <!-- Brand Box -->
+                <div class="col-sm-6 brand">
+                    <div class="logo"><img src="~/img/site/logo-noletter.png" /></div>
+
+                    <div class="heading">
+                        <h2>Lumen High Jewelry</h2>
+                        <p>Doğru adres, doğru seçim.</p>
+                    </div>
+                </div>
+
+
+                <!-- Form Box -->
+                <div class="col-sm-6 form">
+
+                    <!-- Login Form -->
+                    <div class="login form-peice switched">
+                        @await Component.InvokeAsync("ComLoginPage", Model.UserLoginVM)
+                    </div><!-- End Login Form -->
+                    <!-- Signup Form -->
+                    <div class="signup form-peice">
+                        @await Component.InvokeAsync("ApplicationPage", Model.ComApplicationAddVM)
+                    </div><!-- End Signup Form -->
+                </div>
+            </div>
+
+        </section>
+
+
+        <footer>
+            <p>
+                Siteye git: <a asp-area="" asp-controller="Home" asp-action="Index" target="_blank">lumenhighjewelry</a>
+            </p>
+        </footer>
+
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/company_authpage.js" asp-append-version="true"></script>
+    @await Component.InvokeAsync("NToastNotify")
+</body>
+</html>

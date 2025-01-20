@@ -1,0 +1,93 @@
+﻿@using CetinFarshidfar.JewelryECommerce.EntityLayer.VMs.Companies
+@model UpdateCompanyVM
+@*
+    CompanyMod - Company Update Page
+*@
+<div class="form-area">
+    
+    <form class="form" id="postForm">
+        <h2><i class="fa fa-building"></i></h2>
+        <input type="hidden" asp-for="Id" name="Id" />
+        <div class="form-group">
+            <label asp-for="Id" class="form-label"></label>
+            <span class="form-unchanged">@Model.Id</span>
+            <span class="text-danger" id="idError" asp-validation-for="Id"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name" for="Name" class="form-label"></label>
+            <div class="relative"><input asp-for="Name" name="Name" class="form-control" /><i class="fa fa-id-card"></i></div>
+            <span class="text-danger" id="nameError" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address" for="Address" class="form-label"></label>
+            <div class="relative"><input asp-for="Address" name="Address" class="form-control" /><i class="fa fa-map-location-dot"></i></div>
+            <span class="text-danger" id="addressError" asp-validation-for="Address"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="City" for="City" class="form-label"></label>
+            <div class="relative"><input asp-for="City" name="City" class="form-control" /><i class="fa fa-location-crosshairs"></i></div>
+            <span class="text-danger" id="cityError" asp-validation-for="City"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="State" for="State" class="form-label"></label>
+            <div class="relative"><input asp-for="State" name="State" class="form-control" /><i class="fa fa-location-crosshairs"></i></div>
+            <span class="text-danger" id="stateError" asp-validation-for="State"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PostalCode" for="PostalCode" class="form-label"></label>
+            <div class="relative"><input asp-for="PostalCode" name="PostalCode" class="form-control" /><i class="fa fa-map-pin"></i></div>
+            <span class="text-danger" id="postalCodeError" asp-validation-for="PostalCode"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Country" for="Country" class="form-label"></label>
+            <div class="relative"><input asp-for="Country" name="Country" class="form-control" /><i class="fa fa-flag"></i></div>
+            <span class="text-danger" id="countryError" asp-validation-for="Country"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Phone" for="Phone" class="form-label"></label>
+            <div class="relative"><input asp-for="Phone" name="Phone" class="form-control" /><i class="fa fa-square-phone-flip"></i></div>
+            <span class="text-danger" id="phoneError" asp-validation-for="Phone"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" for="Email" class="form-label"></label>
+            <div class="relative"><input asp-for="Email" name="Email" class="form-control" /><i class="fa fa-at"></i></div>
+            <span class="text-danger" id="emailError" asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Website" for="Website" class="form-label"></label>
+            <div class="relative"><input asp-for="Website" name="Website" class="form-control" /><i class="fa fa-earth-americas"></i></div>
+            <span class="text-danger" id="websiteError" asp-validation-for="Website"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FoundedDate" for="FoundedDate" class="form-label"></label>
+            <div class="relative"><input asp-for="FoundedDate" name="FoundedDate" class="form-control" /><i class="fa fa-calendar-day"></i></div>
+            <span class="text-danger" id="foundedDateError" asp-validation-for="FoundedDate"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NumberOfEmployees" for="NumberOfEmployees" class="form-label"></label>
+            <div class="relative"><input asp-for="NumberOfEmployees" name="NumberOfEmployees" class="form-control" /><i class="fa fa-arrow-up-9-1"></i></div>
+            <span class="text-danger" id="numberOfEmployeesError" asp-validation-for="NumberOfEmployees"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Industry" for="Industry" class="form-label"></label>
+            <div class="relative"><input asp-for="Industry" name="Industry" class="form-control" /><i class="fa fa-servicestack"></i></div>
+            <span class="text-danger" id="industryError" asp-validation-for="Industry"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" for="Description" class="form-label"></label>
+            <div class="relative"><textarea asp-for="Description" name="Description" class="form-control" rows="4"></textarea></div>
+            <span class="text-danger" id="descriptionError" asp-validation-for="Description"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ModifiedBy" class="form-label"></label>
+            <span class="form-unchanged">@Model.ModifiedBy</span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ModifiedDate" class="form-label"></label>
+            <span class="form-unchanged">@Model.ModifiedDate</span>
+        </div>
+        <div class="tright">
+            <button id="sendFormBtn" data-url="/Company/Settings/UpdateCompany" type="submit" class="movebtn movebtnsu">Kaydet</button>
+        </div>
+    </form>
+</div>

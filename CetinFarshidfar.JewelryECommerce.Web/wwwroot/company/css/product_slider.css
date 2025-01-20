@@ -1,0 +1,45 @@
+﻿.slide-card {
+    width: 100%;
+    text-align: center;
+    background: var(--main-light-color);
+    padding: 1em 1em;
+}
+
+/* Büyük Görüntü Alanı */
+.main-image-card {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+    .main-image-card img {
+        max-width: 600px;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+/* Thumbnail Görseller */
+.thumbnail-card {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.thumbnail {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+    .thumbnail:hover,
+    .thumbnail.active {
+        border-color: #007BFF;
+    }

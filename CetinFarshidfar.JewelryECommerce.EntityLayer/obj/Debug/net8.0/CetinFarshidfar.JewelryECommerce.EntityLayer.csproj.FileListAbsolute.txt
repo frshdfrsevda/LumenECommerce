@@ -1,0 +1,15 @@
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\bin\Debug\net8.0\CetinFarshidfar.JewelryECommerce.EntityLayer.deps.json
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\bin\Debug\net8.0\CetinFarshidfar.JewelryECommerce.EntityLayer.dll
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\bin\Debug\net8.0\CetinFarshidfar.JewelryECommerce.EntityLayer.pdb
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\bin\Debug\net8.0\CetinFarshidfar.JewelryECommerce.CoreLayer.dll
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\bin\Debug\net8.0\CetinFarshidfar.JewelryECommerce.CoreLayer.pdb
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\obj\Debug\net8.0\CetinFarshidfar.JewelryECommerce.EntityLayer.csproj.AssemblyReference.cache
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\obj\Debug\net8.0\CetinFarshidfar.JewelryECommerce.EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\obj\Debug\net8.0\CetinFarshidfar.JewelryECommerce.EntityLayer.AssemblyInfoInputs.cache
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\obj\Debug\net8.0\CetinFarshidfar.JewelryECommerce.EntityLayer.AssemblyInfo.cs
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\obj\Debug\net8.0\CetinFarshidfar.JewelryECommerce.EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\obj\Debug\net8.0\CetinFar.8AF8678A.Up2Date
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\obj\Debug\net8.0\CetinFarshidfar.JewelryECommerce.EntityLayer.dll
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\obj\Debug\net8.0\refint\CetinFarshidfar.JewelryECommerce.EntityLayer.dll
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\obj\Debug\net8.0\CetinFarshidfar.JewelryECommerce.EntityLayer.pdb
+C:\Users\me_ct\OneDrive\Masaüstü\Mücevherat\CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.EntityLayer\obj\Debug\net8.0\ref\CetinFarshidfar.JewelryECommerce.EntityLayer.dll

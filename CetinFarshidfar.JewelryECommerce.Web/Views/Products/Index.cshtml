@@ -1,0 +1,289 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <style>
+        /*Ürün*/
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+        }
+        /*Kategori*/
+        .category-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .category-list li {
+            margin-bottom: 8px;
+        }
+
+        .category-list input[type="checkbox"] {
+            margin-right: 8px;
+        }
+    </style>
+}
+<div class="p-5">
+    <div class="row">
+        <div class="col-md-3 p-4">
+            <form id="filterForm">
+                <!-- Fiyat Aralığı -->
+                <div class="mb-4">
+                    <h5>Fiyat Aralığı</h5>
+                    <div class="form-check">
+                        <label for="minPrice" class="form-label">En az:</label>
+                        <input type="number" class="form-control" name="minPrice" value="0">
+                    </div>
+                    <div class="form-check">
+                        <label for="maxPrice" class="form-label">En çok:</label>
+                        <input type="number" class="form-control" name="maxPrice" value="1000000">
+                    </div>
+                </div>
+
+                <!-- Taglar -->
+                <div class="mb-4">
+                    <div id="tagsContainer">
+                        <h5>Etiketler</h5>
+                        <!-- Taglar buraya yüklenecek -->
+                        <!-- Loading Spinner -->
+                        <div id="loadingTagSpinner" style="display:none;">
+                            <i class="fa fa-spinner fa-spin"></i> Yükleniyor...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kategoriler -->
+                <div class="mb-4">
+                    <h5>Kategoriler</h5>
+                    <div id="categoriesContainer">
+                        <!-- Kategoriler buraya yüklenecek -->
+                        <!-- Loading Spinner -->
+                        <div id="loadingCategorySpinner" style="display:none;">
+                            <i class="fa fa-spinner fa-spin"></i> Yükleniyor...
+                        </div>
+                    </div>
+                </div>
+                <!-- Ara Butonu -->
+                <div class="text-center mt-4">
+                    <button type="button" id="searchButton" class="btn btn-primary">Ara</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9 p-4 row" id="productContainer">
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" style="display:none;">
+                <i class="fa fa-spinner fa-spin"></i> Yükleniyor...
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Sayfa yüklendiğinde ürünleri çek
+            loadProducts();
+            loadCategories();
+            loadTags();
+            
+            function loadProducts() {
+                // Spinner'ı göster
+                $('#loadingSpinner').show();
+
+                $.ajax({
+                    url: '/Products/GetProducts',  // Controller'daki ürünleri çeken action'ınızın URL'si
+                    type: 'GET',
+                    success: function(response) {
+                        // Ürünler başarıyla geldiyse
+                        if (response.success) {
+                            // Ürünleri döngü ile ekleyin
+                            var productsHtml = '';
+                            response.products.forEach(function(product) {
+                               productsHtml += `
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card shadow-sm">
+                                            <img src="${product.imagePath}" class="card-img-top" alt="${product.title}">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-truncate" title="${product.title}">${product.title}</h5>
+                                                <p class="card-text">
+                                                    <span class="badge bg-secondary">${product.category}</span>
+                                                </p>
+                                                <p class="card-text">
+                                                    <strong>Fiyat: </strong>
+                                                    <span class="text-primary">${product.listPrice.toFixed(2)}₺</span>
+                                                </p>
+                                                <p class="card-text">
+                                                    <strong>Stok: </strong>
+                                                    <span>${product.stockStatus}</span>
+                                                </p>
+                                                <a href="/Products/Detail/${product.id}" class="btn btn-primary w-100">Detayları Gör</a>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                            });
+
+                            // Ürünleri container'a ekle
+                            $('#productContainer').html(productsHtml);
+                        } else {
+                            // Hata durumunda bir mesaj göster
+                            $('#productContainer').html('<p>Ürünler yüklenirken bir hata oluştu.</p>');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // AJAX isteği başarısız olursa
+                        $('#productContainer').html('<p>Bir hata oluştu: ' + error + '</p>');
+                    },
+                    complete: function() {
+                        // Spinner'ı gizle
+                        $('#loadingSpinner').hide();
+                    }
+                });
+            }
+
+            function loadCategories(){
+                // Spinner'ı göster
+                $('#loadingCategorySpinner').show();
+                $.ajax({
+                    url: '/Products/GetCategories', // Controller Action
+                    type: 'GET',
+                    success: function (response) {
+                        // Gelen verilerle kategorileri oluştur
+                        if (response.success) {
+                            const categoriesHtml = buildCategoryHierarchy(response.categories);
+                            console.log(categoriesHtml);
+                            $('#categoriesContainer').html(categoriesHtml);
+
+                            // Checkbox olaylarını ekle
+                            bindCategoryCheckboxEvents();
+                        } else {
+                            $('#categoriesContainer').html('<p>Kategoriler yüklenemedi.</p>');
+                        }
+                    },
+                    error: function () {
+                        $('#categoriesContainer').html('<p>Bir hata oluştu.</p>');
+                    },
+                    complete: function() {
+                        // Spinner'ı gizle
+                        $('#loadingCategorySpinner').hide();
+                    }
+                });
+            }
+
+            // Kategori hiyerarşisini oluştur
+            function buildCategoryHierarchy(categories, parentId = null) {
+                let html = '<ul class="category-list">';
+                categories
+                    .filter(category => category.parentCategoryId === parentId)
+                    .forEach(category => {
+                        html += `
+                            <li>
+                                <div>
+                                    <input type="checkbox" class="category-checkbox" data-id="${category.id}" data-parent-id="${category.parentCategoryId}">
+                                    <label>${category.name}</label>
+                                </div>
+                                ${buildCategoryHierarchy(categories, category.id)}
+                            </li>`;
+                    });
+                html += '</ul>';
+                return html;
+            }
+            // Checkbox olaylarını bağla
+            function bindCategoryCheckboxEvents() {
+                $('.category-checkbox').change(function () {
+                    const isChecked = $(this).is(':checked');
+                    const categoryId = $(this).data('id');
+
+                    // Alt kategorileri kontrol et
+                    $(`.category-checkbox[data-parent-id="${categoryId}"]`).prop('checked', isChecked);
+
+                    // Üst kategorileri kontrol et
+                    if (!isChecked) {
+                        checkParentCategories($(this).data('parent-id'));
+                    }
+                });
+            }
+
+            // Üst kategorileri kontrol eden yardımcı fonksiyon
+            function checkParentCategories(parentId) {
+                if (!parentId) return;
+                const parentCheckbox = $(`.category-checkbox[data-id="${parentId}"]`);
+                const allSiblingsChecked = $(`.category-checkbox[data-parent-id="${parentId}"]:checked`).length === 0;
+                if (!allSiblingsChecked) {
+                    parentCheckbox.prop('checked', false);
+                    checkParentCategories(parentCheckbox.data('parent-id'));
+                }
+            }
+
+            function loadTags(){
+                // Spinner'ı göster
+                $('#loadingTagSpinner').show();
+                $.ajax({
+                    url: '/Products/GetTags', // Controller Action
+                    type: 'GET',
+                    success: function (response) {
+                        // Gelen verilerle kategorileri oluştur
+                        if (response.success) {
+                            const tagsHtml = buildTagHierarchy(response.tags);
+                            $('#tagsContainer').html(tagsHtml);
+
+                        } else {
+                            $('#tagsContainer').html('<p>Etiketler yüklenemedi.</p>');
+                        }
+                    },
+                    error: function () {
+                        $('#tagsContainer').html('<p>Bir hata oluştu.</p>');
+                    },
+                    complete: function() {
+                        // Spinner'ı gizle
+                        $('#loadingTagSpinner').hide();
+                    }
+                });
+            }
+            // Kategori hiyerarşisini oluştur
+            function buildTagHierarchy(tags, parentId = null) {
+                let html = '';
+
+                // Ana Tag döngüyle işle
+                tags
+                    .filter(tag => tag.parentTagId === null) // Sadece ana tag
+                    .forEach(mainTag => {
+                        // Alt tagleri al
+                        const childTags = tags.filter(c => c.parentTagId === mainTag.id);
+
+                        html += `
+                            <div class="tag-group">
+                                <h5>${mainTag.name}</h5>
+                                ${childTags.length > 0 ? buildChildTagList(childTags) : ''}
+                            </div>`;
+                    });
+
+                return html;
+            }
+            // Alt tagler için checkbox listesi oluştur
+            function buildChildTagList(childTags) {
+                let html = '<ul class="tag-list">';
+                childTags.forEach(child => {
+                    html += `
+                        <li>
+                            <input type="checkbox" class="tag-checkbox" data-id="${child.id}" data-parent-id="${child.parentTagId}">
+                            <label>${child.name}</label>
+                        </li>`;
+                });
+                html += '</ul>';
+                return html;
+            }
+
+        });
+    </script>
+}

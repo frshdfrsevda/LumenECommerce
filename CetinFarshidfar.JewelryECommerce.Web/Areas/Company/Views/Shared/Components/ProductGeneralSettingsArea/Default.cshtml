@@ -1,0 +1,75 @@
+﻿@using CetinFarshidfar.JewelryECommerce.EntityLayer.Entitites
+@using CetinFarshidfar.JewelryECommerce.EntityLayer.VMs.Categories
+@using CetinFarshidfar.JewelryECommerce.EntityLayer.VMs.Products
+@model UpdateGeneralSettingsVM
+@{
+    var selectedCategoryId = Model.CategoryId;
+}
+@*
+    CompanyMod - Product General Settings Update Page
+*@
+<div class="form-area">
+
+    <form class="form" id="postForm">
+        <div class="form-group">
+            <label asp-for="ProductCode" class="control-label"></label>
+            <input asp-for="ProductCode" name="ProductCode" class="form-control" />
+            <span asp-validation-for="ProductCode" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" name="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SpecialProduction" class="control-label"></label>
+            <input asp-for="SpecialProduction" type="checkbox" name="SpecialProduction" class="form-check" />
+            <span asp-validation-for="SpecialProduction" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="StockQuantity" class="control-label"></label>
+            <input asp-for="StockQuantity" name="StockQuantity" class="form-control" />
+            <span asp-validation-for="StockQuantity" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Price" class="control-label"></label>
+            <input asp-for="Price" name="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DiscountPercentage" class="control-label"></label>
+            <input asp-for="DiscountPercentage" name="DiscountPercentage" class="form-control" />
+            <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EstimatedShippingTime" class="control-label"></label>
+            <input asp-for="EstimatedShippingTime" name="EstimatedShippingTime" class="form-control" />
+            <span asp-validation-for="EstimatedShippingTime" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CategoryId" class="control-label"></label>
+            <select id="categorySelect" name="CategoryId" class="form-control"></select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description.Content" class="control-label"></label>
+            <input asp-for="Description.Content" name="Description.Content" class="form-control" />
+            <span asp-validation-for="Description.Content" class="text-danger"></span>
+        </div>
+
+        <input type="hidden" id="selectedCategoryId" value="@selectedCategoryId" />
+        <input type="hidden" asp-for="Id" name="Id" />
+        <input type="hidden" asp-for="Description.Id" name="Description.Id" />
+        <div class="tright">
+            <button id="sendFormBtn" data-url="/Company/Products/ProductGeneralSettings" type="submit" class="movebtn movebtnsu">Kaydet</button>
+        </div>
+    </form>
+</div>

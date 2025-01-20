@@ -1,0 +1,60 @@
+﻿@using CetinFarshidfar.JewelryECommerce.EntityLayer.VMs.ProductImages
+@model List<ProductImageVM>
+@{
+    string productId = ViewBag.ProductId;
+    int slideIndex = 0;
+    var firstPhoto = Model.FirstOrDefault();
+}
+@*
+     CompanyMod - Product Images Settings Update Page
+*@
+
+<div class="card slide-card">
+    <h3>Mevcut Fotoğraflar</h3>
+    <!-- Büyük Görüntü Alanı -->
+    <div class="main-image-card">
+        <img id="mainImage" src="@firstPhoto.Path" alt="Product Image">
+    </div>
+
+    <!-- Thumbnail Görseller -->
+    <div class="thumbnail-card">
+        @foreach (var photo in Model)
+        {
+            <img class="thumbnail" src="@photo.Path" alt="Product Photo" data-index="@slideIndex" />
+            slideIndex++;
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-12 card">
+        @foreach(var photo in Model){
+            <div class="row">
+                <div class="col"><img src="@photo.Path" alt="thumbnail-product-photo" style="width:70px; height:70px;"/></div>
+                <div class="col"><input class="form-control" value="@photo.Queue" data-id="input-@photo.Id"/></div>
+                <div class="col">
+                    <button class="btn btn-primary update-photo-btn" data-id="@photo.Id"><i class="fa-solid fa-wrench"></i></button>
+                    <button class="btn btn-danger delete-photo-btn" data-id="@photo.Id"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-6 col-12 card">
+        <div class="form-area">
+            <form class="form" id="postFormData">
+                <h2><i class="fa fa-unlock-keyhole"></i></h2>
+                <div class="form-group">
+                    <label for="File" class="form-label">Fotoğraf Seçiniz</label>
+                    <input name="File" class="form-control" type="file" />
+                </div>
+                <div class="form-group">
+                    <label for="Queue" class="form-label">Gösterim Sırası (Zorunlu değildir)</label>
+                    <input name="Queue" class="form-control" type="number" />
+                </div>
+                <input name="ProductId" class="form-control" type="hidden" value="@productId" />
+                <div class="tright">
+                    <button id="sendFormDataBtn" data-url="/Company/Products/AddProductImage" type="submit" class="movebtn movebtnsu">Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

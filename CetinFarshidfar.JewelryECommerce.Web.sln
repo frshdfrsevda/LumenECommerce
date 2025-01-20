@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CetinFarshidfar.JewelryECommerce.Web", "CetinFarshidfar.JewelryECommerce.Web\CetinFarshidfar.JewelryECommerce.Web.csproj", "{D84203F2-3DB4-4F04-817D-E517EAEB6281}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CetinFarshidfar.JewelryECommerce.CoreLayer", "CetinFarshidfar.JewelryECommerce.Core\CetinFarshidfar.JewelryECommerce.CoreLayer.csproj", "{97E4E07F-4ECB-46FC-842E-C7F5018E3DEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CetinFarshidfar.JewelryECommerce.EntityLayer", "CetinFarshidfar.JewelryECommerce.EntityLayer\CetinFarshidfar.JewelryECommerce.EntityLayer.csproj", "{3CCB77C8-7898-417F-B603-253DF82176AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CetinFarshidfar.JewelryECommerce.DataAccessLayer", "CetinFarshidfar.JewelryECommerce.DataAccessLayer\CetinFarshidfar.JewelryECommerce.DataAccessLayer.csproj", "{F869064B-95E4-4CA4-9EB9-37C40EA4A3EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CetinFarshidfar.JewelryECommerce.ServiceLayer", "CetinFarshidfar.JewelryECommerce.ServiceLayer\CetinFarshidfar.JewelryECommerce.ServiceLayer.csproj", "{3364295E-BF90-4653-BC68-77342FF698FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D84203F2-3DB4-4F04-817D-E517EAEB6281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84203F2-3DB4-4F04-817D-E517EAEB6281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D84203F2-3DB4-4F04-817D-E517EAEB6281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D84203F2-3DB4-4F04-817D-E517EAEB6281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E4E07F-4ECB-46FC-842E-C7F5018E3DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E4E07F-4ECB-46FC-842E-C7F5018E3DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E4E07F-4ECB-46FC-842E-C7F5018E3DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E4E07F-4ECB-46FC-842E-C7F5018E3DEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CCB77C8-7898-417F-B603-253DF82176AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CCB77C8-7898-417F-B603-253DF82176AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CCB77C8-7898-417F-B603-253DF82176AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CCB77C8-7898-417F-B603-253DF82176AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F869064B-95E4-4CA4-9EB9-37C40EA4A3EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F869064B-95E4-4CA4-9EB9-37C40EA4A3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F869064B-95E4-4CA4-9EB9-37C40EA4A3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F869064B-95E4-4CA4-9EB9-37C40EA4A3EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3364295E-BF90-4653-BC68-77342FF698FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3364295E-BF90-4653-BC68-77342FF698FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3364295E-BF90-4653-BC68-77342FF698FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3364295E-BF90-4653-BC68-77342FF698FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

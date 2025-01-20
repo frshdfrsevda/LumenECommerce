@@ -1,0 +1,53 @@
+﻿@using CetinFarshidfar.JewelryECommerce.EntityLayer.VMs.Users
+@model UserVM
+@*
+    CompanyMod - Profile Update Page
+*@
+<div class="form-area">
+
+    <form class="form" id="postForm">
+        <h2><i class="fa fa-user"></i></h2>
+        <input type="hidden" asp-for="Id" name="Id" />
+        <input type="hidden" asp-for="Email" name="Email" />
+        <input type="hidden" asp-for="EmailConfirmed" name="EmailConfirmed" />
+        <input type="hidden" asp-for="AccessFailedCount" name="AccessFailedCount" />
+        <input type="hidden" asp-for="Role" name="Role" />
+        <input type="hidden" asp-for="CreatedTime" name="CreatedTime" />
+        <div class="form-group">
+            <label asp-for="Id" class="form-label"></label>
+            <span class="form-unchanged">@Model.Id</span>
+            <span class="text-danger" id="idError" asp-validation-for="Id"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FullName" for="FullName" class="form-label"></label>
+            <div class="relative"><input asp-for="FullName" name="FullName" class="form-control" /><i class="fa fa-id-card"></i></div>
+            <span class="text-danger" id="nameError" asp-validation-for="FullName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" for="Email" class="form-label"></label>
+            @{
+                var emailConfirmed = Model.EmailConfirmed ? "<i class='bi bi-check-circle px-2 text-success'></i>Doğrulanmış" : "<i class='bi bi-x-circle px-2 text-danger'></i>Doğrulanmamış";
+            }
+            <span class="form-unchanged">@Model.Email @Html.Raw(emailConfirmed)</span>
+            <span class="text-danger" id="emailError" asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber" for="PhoneNumber" class="form-label"></label>
+            <div class="relative"><input asp-for="PhoneNumber" name="PhoneNumber" class="form-control" /><i class="fa fa-square-phone-flip"></i></div>
+            <span class="text-danger" id="phoneNumberError" asp-validation-for="PhoneNumber"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Role" for="Role" class="form-label"></label>
+            <span class="form-unchanged">@Model.Role</span>
+            <span class="text-danger" id="roleError" asp-validation-for="Role"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreatedTime" for="CreatedTime" class="form-label"></label>
+            <span class="form-unchanged">@Model.CreatedTime</span>
+            <span class="text-danger" id="createdTimeError" asp-validation-for="CreatedTime"></span>
+        </div>
+        <div class="tright">
+            <button id="sendFormBtn" data-url="/Company/Settings/UpdateProfileSettings" type="submit" class="movebtn movebtnsu">Kaydet</button>
+        </div>
+    </form>
+</div>

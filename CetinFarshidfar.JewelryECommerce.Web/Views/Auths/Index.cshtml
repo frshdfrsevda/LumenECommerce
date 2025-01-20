@@ -1,0 +1,48 @@
+﻿@model AuthsModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+	<link rel="stylesheet" href="~/css/authpage.css" asp-append-version="true" />
+}
+<div class="authpage">
+
+	
+
+	<div class="section">
+		<div class="container">
+			<div class="justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
+						<div asp-validation-summary="ModelOnly" class="bg-danger text-light p-3"></div>
+						<h6 class="mb-0 pb-3"><span class="mx-4">Giriş yap </span><span class="mx-4">Kayıt ol</span></h6>
+						<input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+						<label for="reg-log"></label>
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<a asp-area="" asp-controller="Home" asp-action="Index" class="logo">
+										<img src="~/img/site/logo.png" alt="">
+									</a>
+									<div class="center-wrap">
+										@await Component.InvokeAsync("SignInPage", Model.UserLoginVM)
+									</div>
+								</div>
+								<div class="card-back">
+									<a asp-area="" asp-controller="Home" asp-action="Index" class="logo">
+										<img src="~/img/site/logo.png" alt="">
+									</a>
+									<div class="center-wrap">
+										@await Component.InvokeAsync("SignUpPage", Model.UserRegisterVM)
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

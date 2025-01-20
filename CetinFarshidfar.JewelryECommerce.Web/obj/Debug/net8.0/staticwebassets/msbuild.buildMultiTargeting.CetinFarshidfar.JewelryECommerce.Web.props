@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CetinFarshidfar.JewelryECommerce.Web.props" />
+</Project>

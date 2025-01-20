@@ -1,0 +1,71 @@
+﻿@using CetinFarshidfar.JewelryECommerce.EntityLayer.VMs.Products
+@model List<ProductToListVM>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Company/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <!-- DataTables CSS kütüphanesini ekler -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" /> <!-- Responsive CSS -->
+}
+<h1>Ürünler</h1>
+<div class=" d-block text-end my-4"><a asp-area="Company" asp-controller="Products" asp-action="AddNewProduct" class="btn btn-outline-warning"><i class="fa-solid fa-circle-plus px-2"></i>Yeni Ürün Ekleme</a></div>
+<!-- DataTable yapılandırmasını tanımlar -->
+<table id="productsTable" class="display responsive nowrap" width="100%">
+    <thead>
+        <tr>
+            <th>Ürün Kodu</th>
+            <th>İsim</th>
+            <th>Kategori</th>
+            <th>Fiyat</th>
+            <th>İndirim Durumu</th>
+            <th>Stok Miktarı</th>
+            <th>Özel Üretim</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+@section Scripts {
+    <!-- jQuery ve DataTables JavaScript kütüphanelerini ekler -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script> <!-- Responsive JS -->
+    <script>
+        // Document ready olduğunda DataTable'ı başlatır
+        $(document).ready(function () {
+            $('#productsTable').DataTable({
+                // DataTables yapılandırması
+                "processing": true,    // Veri işleme gösterimi
+                "serverSide": true,    // Sunucu tarafında işleme
+                "ajax": {
+                    "url": "/Company/Products/GetProducts", // AJAX isteği için URL
+                    "type": "GET"                   // İstek tipi
+                },
+                // DataTables için sütun tanımlamaları
+                "columns": [
+                    { "data": "productCode" },
+                    { "data": "name" },
+                    { "data": "category.name" },
+                    { "data": "price" },
+                    { "data": "discountPercentage" },
+                    { "data": "stockQuantity" },
+                    { "data": "specialProduction" },
+                    {
+                        "data": null,
+                        "render": function (data, type, row) {
+                            return `<a href=/Company/Products/Product?productId=${data.id} class="btn btn-primary"">İşlem</a>`;
+                        },
+                        "orderable": false
+                    }
+                ],
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Turkish.json"
+                },
+                "responsive": true
+            });
+        });
+    </script>
+}

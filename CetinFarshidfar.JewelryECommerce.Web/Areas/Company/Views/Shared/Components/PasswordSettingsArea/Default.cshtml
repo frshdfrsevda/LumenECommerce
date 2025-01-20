@@ -1,0 +1,29 @@
+﻿@using CetinFarshidfar.JewelryECommerce.EntityLayer.VMs.Users
+@model UserNewPasswordVM
+@*
+    CompanyMod - Password Update Page
+*@
+<div class="form-area">
+
+    <form class="form" id="postForm">
+        <h2><i class="fa fa-unlock-keyhole"></i></h2>
+        <div class="form-group">
+            <label asp-for="CurrentPassword" class="form-label"></label>
+            <div class="relative"><input asp-for="CurrentPassword" name="CurrentPassword" class="form-control" /><i class="fa fa-unlock"></i></div>
+            <span class="text-danger" id="currentPasswordError" asp-validation-for="CurrentPassword"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewPassword" for="NewPassword" class="form-label"></label>
+            <div class="relative"><input asp-for="NewPassword" name="NewPassword" class="form-control" /><i class="fa fa-key"></i></div>
+            <span class="text-danger" id="newPasswordError" asp-validation-for="NewPassword"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmNewPassword" for="ConfirmNewPassword" class="form-label"></label>
+            <div class="relative"><input asp-for="ConfirmNewPassword" name="ConfirmNewPassword" class="form-control" /><i class="fa fa-key"></i></div>
+            <span class="text-danger" id="confirmNewPasswordError" asp-validation-for="ConfirmNewPassword"></span>
+        </div>
+        <div class="tright">
+            <button id="sendFormBtn" data-url="/Company/Settings/UpdatePassword" type="submit" class="movebtn movebtnsu">Kaydet</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Company/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/customer_user_form.css" asp-append-version="true" />
+}
+
+<h1>Ayarlar</h1>
+<div class="bar">
+    <button class="bar-btn selected" data-url="/Company/Settings/CompanySettings"><i class="fa fa-building px-2"></i>Firma Bilgileri</button>
+    <button class="bar-btn" data-url="/Company/Settings/ProfileSettings"><i class="fa fa-user px-2"></i>Profil Bilgileri</button>
+    <button class="bar-btn" data-url="/Company/Settings/PasswordSettings"><i class="fa fa-unlock-keyhole px-2"></i>Şifre Güncelleme</button>
+</div>
+<div id="ajaxResponseMessage">
+    <!-- Spinner elementi -->
+    <div id="loadingSpinner" style="display: none;">
+        <img src="https://i.imgur.com/JfPpwOA.gif" alt="Loading...">
+    </div>
+</div>
+<div id="resultContent">
+    @await Component.InvokeAsync("CompanySettingsArea")
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,359 @@
+﻿:root {
+    --mainFont: 'Raleway', sans-serif;
+    --subFont: 'Montserrat', sans-serif;
+    --primaryColor: #551756;
+    --secondaryColor: #f7edd5;
+    --inputColor: #bbbbbb;
+    --main-color: #cab273;
+    --main-light-color: #fffbf0;
+}
+
+/* General Style */
+body {
+    font-family: var(--subFont);
+    background: var(--secondaryColor);
+}
+
+.container {
+    max-width: 900px;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+input {
+    outline: none !important;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* Form Holder Section */
+section#formHolder {
+    padding: 50px 0;
+}
+
+/* Brand Area */
+.brand {
+    padding: 20px;
+    background: url('https://goo.gl/A0ynht');
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    min-height: 540px;
+    position: relative;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.6s cubic-bezier(1.000, -0.375, 0.285, 0.995);
+    z-index: 9999;
+}
+
+    .brand.active {
+        width: 100%;
+    }
+
+    .brand::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(202, 178, 115, 0.85);
+        z-index: -1;
+    }
+
+    .brand div.logo {
+        border-radius:100%;
+        display: block;
+        width: 100px;
+        height: 100px;
+    }
+    .brand div.logo img{
+        width: 100%;
+        height: 100%;
+        object-fit:contain;
+    }
+    .brand .heading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        transition: all 0.6s;
+    }
+
+        .brand .heading.active {
+            top: 100px;
+            left: 100px;
+            transform: translate(0);
+        }
+
+        .brand .heading h2 {
+            font-size: 2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0;
+            color: var(--primaryColor);
+        }
+
+        .brand .heading p {
+            font-size: 1em;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: var(--mainFont);
+        }
+
+    .brand .success-msg {
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 60px;
+    }
+
+        .brand .success-msg p {
+            font-size: 25px;
+            font-weight: 400;
+            font-family: var(--mainFont);
+        }
+
+        .brand .success-msg a {
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 8px 30px;
+            background: var(--primaryColor);
+            text-decoration: none;
+            color: #fff;
+            border-radius: 30px;
+        }
+
+        .brand .success-msg p,
+        .brand .success-msg a {
+            transition: all 0.9s;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+            .brand .success-msg p.active,
+            .brand .success-msg a.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+/* Form Area */
+.form {
+    position: relative;
+}
+
+    .form .form-peice {
+        background: #fff;
+        min-height: 480px;
+        margin-top: 30px;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        color: var(--inputColor);
+        padding: 30px 0 60px;
+        transition: all 0.9s cubic-bezier(1.000, -0.375, 0.285, 0.995);
+        position: absolute;
+        top: 0;
+        left: -30%;
+        width: 130%;
+        overflow: hidden;
+    }
+
+        .form .form-peice.switched {
+            transform: translateX(-100%);
+            width: 100%;
+            left: 0;
+        }
+
+        .form .form-peice form {
+            padding: 0 40px;
+            margin: 0;
+            width: 70%;
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+        }
+
+        .form .form-peice .form-group {
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+            .form .form-peice .form-group.hasError input {
+                border-color: var(--primaryColor) !important;
+            }
+
+            .form .form-peice .form-group.hasError label {
+                color: var(--primaryColor) !important;
+            }
+
+            .form .form-peice .form-group label {
+                font-size: 12px;
+                font-weight: 400;
+                text-transform: uppercase;
+                font-family: var(--subFont);
+                transform: translateY(40px);
+                transition: all 0.4s;
+                cursor: text;
+                z-index: -1;
+            }
+
+                .form .form-peice .form-group label.active {
+                    transform: translateY(10px);
+                    font-size: 10px;
+                }
+
+                .form .form-peice .form-group label.fontSwitch {
+                    font-family: var(--mainFont) !important;
+                    font-weight: 600;
+                }
+
+            .form .form-peice .form-group input:not([type=submit]) {
+                background: none;
+                outline: none;
+                border: none;
+                display: block;
+                padding: 10px 0;
+                width: 100%;
+                border-bottom: 1px solid #eee;
+                color: #444;
+                font-size: 15px;
+                font-family: var(--subFont);
+                z-index: 1;
+            }
+
+            .form .form-peice .form-group input.hasError {
+                border-color: var(--primaryColor);
+            }
+
+            .form .form-peice .form-group span.error {
+                color: var(--primaryColor);
+                font-family: var(--subFont);
+                font-size: 12px;
+                position: absolute;
+                bottom: -20px;
+                right: 0;
+                display: block;
+            }
+
+            .form .form-peice .form-group input[type=password] {
+                color: var(--primaryColor);
+            }
+
+        .form .form-peice .CTA {
+            margin-top: 30px;
+        }
+
+            .form .form-peice .CTA input {
+                font-size: 12px;
+                text-transform: uppercase;
+                padding: 5px 30px;
+                background: var(--primaryColor);
+                color: #fff;
+                border-radius: 30px;
+                margin-right: 20px;
+                border: none;
+                font-family: var(--subFont);
+            }
+
+            .form .form-peice .CTA a.switch {
+                font-size: 13px;
+                font-weight: 400;
+                font-family: var(--subFont);
+                color: var(--inputColor);
+                text-decoration: underline;
+                transition: all 0.3s;
+            }
+
+                .form .form-peice .CTA a.switch:hover {
+                    color: var(--primaryColor);
+                }
+
+footer {
+    text-align: center;
+}
+
+    footer p {
+        color: #777;
+    }
+
+        footer p a,
+        footer p a:focus {
+            color: #b8b09f;
+            transition: all 0.3s;
+            text-decoration: none !important;
+        }
+
+            footer p a:hover {
+                color: var(--primaryColor);
+            }
+
+@media (max-width: 768px) {
+    .container {
+        overflow: hidden;
+    }
+
+    section#formHolder {
+        padding: 0;
+    }
+
+        section#formHolder .brand {
+            min-height: 200px !important;
+        }
+
+            section#formHolder .brand.active {
+                min-height: 100vh !important;
+            }
+
+        section#formHolder .heading.active {
+            top: 200px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        section#formHolder .success-msg p {
+            font-size: 16px;
+        }
+
+        section#formHolder .success-msg a {
+            padding: 5px 30px;
+            font-size: 10px;
+        }
+
+        section#formHolder .form {
+            width: 80vw;
+            min-height: 500px;
+            margin-left: 10vw;
+        }
+
+            section#formHolder .form .form-peice {
+                margin: 0;
+                top: 0;
+                left: 0;
+                width: 100% !important;
+                transition: all 0.5s ease-in-out;
+            }
+
+                section#formHolder .form .form-peice.switched {
+                    transform: translateY(-100%);
+                    width: 100%;
+                    left: 0;
+                }
+
+                section#formHolder .form .form-peice form {
+                    width: 100% !important;
+                    padding: 60px;
+                    left: 50[_{{{CITATION{{{_1{](https://github.com/Akshay-1314/Inventory_Management_Backend_Laravel/tree/27d58cb4272a8b84b6760c3efe8196a7fdb79866/Views%2Fsignup.blade.php)[_{{{CITATION{{{_2{](https://github.com/PleaseDo-crypto/Norma-035/tree/c2c70d0e8f89b1cd6da06fc2046b9c30fd461c2e/src%2Fmain%2Fresources%2Fstatic%2FSkins%2Findex3.php)[_{{{CITATION{{{_3{](https://github.com/teamprodev/oyina_laravel/tree/23c0f84f33ca6974d26de63d8e83b65928365718/resources%2Fviews%2Fauth%2Flogin.blade.php)[_{{{CITATION{{{_4{](https://github.com/muhammadeko/EvoteCI/tree/cc429daeb6b7f9acc96aab93b5a752c9c41ee2ea/evote-web%2Fapp%2FViews%2Fuser%2FSign.php)
